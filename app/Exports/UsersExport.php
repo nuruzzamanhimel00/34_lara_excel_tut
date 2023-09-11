@@ -10,8 +10,9 @@ use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 
-class UsersExport implements FromArray, WithHeadings
+class UsersExport implements FromArray, WithHeadings, WithMapping
 {
     protected $data;
     public function __construct($data)
@@ -48,4 +49,25 @@ class UsersExport implements FromArray, WithHeadings
     // {
     //     return view('user', ['datas' => $this->data]);
     // }
+
+    public function map($row): array
+    {
+        return [
+            [
+                $row['id'],
+                $row['name'],
+                $row['email'],
+            ],
+            // [
+            //     $row['id'],
+            //     '----',
+            //     $row['email'],
+            // ],
+            // [
+            //     $row['id'],
+            //     $row['name'],
+            //     '----',
+            // ],
+        ];
+    }
 }
