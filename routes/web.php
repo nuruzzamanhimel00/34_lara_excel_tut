@@ -23,3 +23,4 @@ Route::get('/export', function () {
 });
 
 Route::get('users/export/', [ExportController::class, 'export']);
+Route::get('orders/export/', [ExportController::class, 'orderExport']);
