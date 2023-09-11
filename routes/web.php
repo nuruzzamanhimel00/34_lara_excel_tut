@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Exports\UsersExport;
+use App\Http\Controllers\ExportController;
 use Maatwebsite\Excel\Facades\Excel;
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,5 @@ Route::get('/', function () {
 Route::get('/export', function () {
     return Excel::download(new UsersExport, 'users.xlsx');
 });
+
+Route::get('users/export/', [ExportController::class, 'export']);
