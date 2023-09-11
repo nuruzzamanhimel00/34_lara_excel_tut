@@ -9,13 +9,23 @@ use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class UsersExport implements FromView
+class UsersExport implements FromArray, WithHeadings
 {
     protected $data;
     public function __construct($data)
     {
         $this->data = $data;
+    }
+
+    public function headings(): array
+    {
+        return [
+            'id',
+            'name',
+            'email',
+        ];
     }
     // /**
     //  * @return \Illuminate\Support\Collection
@@ -25,17 +35,17 @@ class UsersExport implements FromView
     //     return User::all();
     // }
 
-    // public function array(): array
-    // {
-    //     return $this->data->toArray();
-    // }
+    public function array(): array
+    {
+        return $this->data->toArray();
+    }
     // public function query()
     // {
     //     return Order::where('amount', '>', 20);
     // }
 
-    public function view(): View
-    {
-        return view('user', ['datas' => $this->data]);
-    }
+    // public function view(): View
+    // {
+    //     return view('user', ['datas' => $this->data]);
+    // }
 }
