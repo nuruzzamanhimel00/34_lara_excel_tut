@@ -7,7 +7,7 @@ use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class OrderExport implements FromCollection, WithHeadings
+class OrderExport implements FromArray, WithHeadings
 {
     protected $data;
     public function __construct($data)

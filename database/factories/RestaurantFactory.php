@@ -17,7 +17,7 @@ class RestaurantFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->streetName() . array_rand([' Cafe', ' Restaurant', ' FoodPoint']),
+            'name' => fake()->streetName().array_rand([' Cafe', ' Restaurant', ' FoodPoint']),
             'email' => fake()->unique()->email(),
             'address' => fake()->address()
         ];
